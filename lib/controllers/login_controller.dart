@@ -2,6 +2,7 @@ import 'package:cryptoapp/controllers/utils.dart';
 import 'package:cryptoapp/model/login.dart';
 import 'package:cryptoapp/repositories/db_repository.dart';
 import 'package:cryptoapp/repositories/rest_repository.dart';
+import 'package:cryptoapp/source/local/authentication.dart';
 
 class LoginController {
   final RestRepository restRepository = RestRepositoryImpl();
@@ -25,7 +26,7 @@ class LoginController {
   }
 
   Future<void> getCurrentAuthentication({
-    required OnSuccessCallback<dynamic> onSuccess,
+    required OnSuccessCallback<AuthenticationData?> onSuccess,
     required OnErrorCallback onError,
     required OnLoadingCallback onLoading,
     required OnFinallyCallback onFinally,
@@ -55,6 +56,17 @@ class LoginController {
       onError("Erro ao fazer a requisição: $e");
     } finally {
       onFinally();
+    }
+  }
+
+  Future<void> logout(
+      {required OnSuccessNoContentCallback onSuccess,
+      required OnErrorCallback onError}) async {
+    try {
+      await dbRepository.deleteAuthentication();
+      onSuccess();
+    } catch (e) {
+      onError("Erro ao fazer a requisição: $e");
     }
   }
 }

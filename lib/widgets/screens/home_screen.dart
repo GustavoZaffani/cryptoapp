@@ -1,16 +1,20 @@
+import 'package:cryptoapp/controllers/login_controller.dart';
 import 'package:cryptoapp/main.dart';
+import 'package:cryptoapp/utils/alerts.dart';
 import 'package:cryptoapp/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
-  const HomeScreen({super.key});
+  HomeScreen({super.key});
+
+  final LoginController loginController = LoginController();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: const Text("Bem-vindo Zaffani",
+        title: const Text("Bem-vindo",
             style: TextStyle(color: Colors.white)),
       ),
       body: const Padding(
@@ -45,7 +49,12 @@ class HomeScreen extends StatelessWidget {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () {
+          loginController.logout(
+            onSuccess: () => Navigator.pushReplacementNamed(context, loginRoute),
+            onError: (error) => Alerts.showUnexpectedErrorDialog(context, error),
+          );
+        },
         backgroundColor: Colors.deepPurple,
         child: const Icon(
           Icons.logout,

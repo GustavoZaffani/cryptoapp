@@ -1,22 +1,27 @@
 import 'package:cryptoapp/source/local/authentication.dart';
 
 class DbRepositoryImpl implements DbRepository {
+
+  final AppDatabase appDatabase = AppDatabase();
+
   @override
   Future<AuthenticationData?> getCurrentAuthentication() {
-    AppDatabase appDatabase = AppDatabase();
     return appDatabase.select(appDatabase.authentication).getSingleOrNull();
   }
 
   @override
   Future<int> insertAuthentication(String userId, String currentEmail) {
-    AppDatabase appDatabase = AppDatabase();
-
     return appDatabase
         .into(appDatabase.authentication)
         .insert(AuthenticationCompanion.insert(
           userId: userId,
           emailLogged: currentEmail,
         ));
+  }
+
+  @override
+  Future<void> deleteAuthentication() {
+    return appDatabase.delete(appDatabase.authentication).go();
   }
 }
 
@@ -25,5 +30,6 @@ abstract class DbRepository {
 
   Future<int> insertAuthentication(String userId, String currentEmail);
 
+  Future<void> deleteAuthentication();
 
 }

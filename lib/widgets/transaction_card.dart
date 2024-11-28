@@ -18,9 +18,9 @@ class TransactionCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color typeColor = type == 'buy' ? Colors.green : Colors.red;
+    Color typeColor = type == 'BUY' ? Colors.green : Colors.red;
     IconData transactionIcon =
-        type == 'buy' ? Icons.arrow_upward : Icons.arrow_downward;
+        type == 'BUY' ? Icons.arrow_upward : Icons.arrow_downward;
 
     return Card(
       margin: const EdgeInsets.symmetric(
@@ -53,7 +53,6 @@ class TransactionCard extends StatelessWidget {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  // Nome da transação
                   Text(
                     cryptoName,
                     style: const TextStyle(

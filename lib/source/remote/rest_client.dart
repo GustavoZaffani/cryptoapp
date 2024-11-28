@@ -1,5 +1,7 @@
 import 'package:cryptoapp/model/login.dart';
+import 'package:cryptoapp/model/negotiation_crypto.dart';
 import 'package:cryptoapp/model/user.dart';
+import 'package:cryptoapp/model/wallet.dart';
 import 'package:retrofit/retrofit.dart';
 import 'package:dio/dio.dart';
 
@@ -14,4 +16,10 @@ abstract class RestClient {
 
   @POST('/login')
   Future<String> login(@Body() Login login);
+
+  @GET('/negotiation-crypto/{userId}')
+  Future<List<NegotiationCrypto>> listNegotiationCrypto(@Path() String userId);
+  
+  @GET("/wallet/{userId}")
+  Future<Wallet> retrieveWallet(@Path() String userId);
 }

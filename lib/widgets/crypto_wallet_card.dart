@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 
 class CryptoWalletCard extends StatelessWidget {
-  CryptoWalletCard({
+  const CryptoWalletCard({
+    super.key,
     required this.name,
     required this.symbol,
     required this.quantity,
     required this.walletValue,
-    required this.averageCost,
+    required this.currentValue,
     required this.profitOrLossPercentage,
   });
 
@@ -14,7 +15,7 @@ class CryptoWalletCard extends StatelessWidget {
   final String symbol;
   final double quantity;
   final double walletValue;
-  final double averageCost;
+  final double currentValue;
   final double profitOrLossPercentage;
 
   @override
@@ -30,7 +31,6 @@ class CryptoWalletCard extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Cabeçalho: Nome e Símbolo da Cripto
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -42,19 +42,16 @@ class CryptoWalletCard extends StatelessWidget {
                 ),
                 Icon(
                   Icons.arrow_upward,
-                  // Um ícone genérico de cripto, pode ser personalizado
                   color: profitColor,
                 ),
               ],
             ),
             SizedBox(height: 10),
-            // Quantidade da Cripto
             Text(
               'Quantidade: ${quantity.toString()}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             SizedBox(height: 10),
-            // Preço de Compra (Wallet Price)
             Text(
               'Preço de Compra: ${walletValue}',
               style: Theme.of(context).textTheme.titleSmall,
@@ -62,11 +59,10 @@ class CryptoWalletCard extends StatelessWidget {
             SizedBox(height: 10),
             // Preço Atual
             Text(
-              'Preço Atual: ${averageCost}',
+              'Preço Atual: ${currentValue}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             SizedBox(height: 10),
-            // Porcentagem de Lucro/Prejuízo
             Text(
               'Lucro/Prejuízo: ${profitOrLossPercentage.toStringAsFixed(2)}%',
               style: TextStyle(

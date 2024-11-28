@@ -33,7 +33,7 @@ class CryptoApp extends StatelessWidget {
       initialRoute: loginRoute,
       routes: {
         loginRoute: (context) => const LoginScreen(),
-        homeRoute: (context) => const HomeScreen(),
+        homeRoute: (context) => HomeScreen(),
         walletRoute: (context) => const WalletScreen(),
         transactionsRoute: (context) => const TransactionList(),
         marketRoute: (context) => const MarketScreen(),
