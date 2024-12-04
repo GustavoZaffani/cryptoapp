@@ -1,3 +1,4 @@
+import 'package:cryptoapp/model/crypto_market.dart';
 import 'package:cryptoapp/model/login.dart';
 import 'package:cryptoapp/model/negotiation_crypto.dart';
 import 'package:cryptoapp/model/user.dart';
@@ -28,4 +29,7 @@ abstract class RestClient {
   
   @GET("/wallet/{userId}")
   Future<Wallet> retrieveWallet(@Path() String userId);
+
+  @GET("/crypto/list")
+  Future<List<CryptoMarket>> retrieveMarket();
 }

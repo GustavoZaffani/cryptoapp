@@ -1,3 +1,4 @@
+import 'package:cryptoapp/model/crypto_market.dart';
 import 'package:cryptoapp/model/login.dart';
 import 'package:cryptoapp/model/negotiation_crypto.dart';
 import 'package:cryptoapp/model/user.dart';
@@ -35,6 +36,11 @@ class RestRepositoryImpl implements RestRepository {
   Future<User> updateUser({required String userId, required User user}) {
     return RestClient(Dio()).updateUser(userId, user);
   }
+
+  @override
+  Future<List<CryptoMarket>> retrieveMarket() {
+    return RestClient(Dio()).retrieveMarket();
+  }
 }
 
 abstract class RestRepository {
@@ -44,4 +50,5 @@ abstract class RestRepository {
   Future<String> login({required Login login});
   Future<List<NegotiationCrypto>> listNegotiationCrypto({required String userId});
   Future<Wallet> retrieveWallet({required String userId});
+  Future<List<CryptoMarket>> retrieveMarket();
 }
