@@ -36,7 +36,10 @@ class _LoginState extends State<LoginScreen> {
           _isPreviousLogged = true;
         }
       },
-      onError: (error) => Alerts.showUnexpectedErrorDialog(context, error),
+      onError: (error) => Alerts.showUnexpectedErrorDialog(
+        context: context,
+        message: error,
+      ),
       onLoading: () => setState(() => _showLoader = true),
       onFinally: () => setState(() => _showLoader = false),
     );
@@ -49,7 +52,10 @@ class _LoginState extends State<LoginScreen> {
           userId: userId,
           currentEmail: _emailController.text,
           onSuccess: (data) => Navigator.pushNamed(context, homeRoute),
-          onError: (error) => Alerts.showUnexpectedErrorDialog(context, error),
+          onError: (error) => Alerts.showUnexpectedErrorDialog(
+            context: context,
+            message: error,
+          ),
           onLoading: () => setState(() => _showLoader = true),
           onFinally: () => setState(() => _showLoader = false),
         );
@@ -57,7 +63,10 @@ class _LoginState extends State<LoginScreen> {
         Navigator.pushNamed(context, homeRoute);
       }
     } else {
-      Alerts.showErrorDialog(context, 'Email ou senha inválidos');
+      Alerts.showErrorDialog(
+        context: context,
+        message: 'Email ou senha inválidos',
+      );
     }
   }
 
@@ -110,8 +119,10 @@ class _LoginState extends State<LoginScreen> {
                           password: _passwordController.text,
                         ),
                         onSuccess: (data) => _onLogged(data),
-                        onError: (error) =>
-                            Alerts.showUnexpectedErrorDialog(context, error),
+                        onError: (error) => Alerts.showUnexpectedErrorDialog(
+                          context: context,
+                          message: error,
+                        ),
                         onFinally: () => setState(() => _showLoader = false),
                         onLoading: () => setState(() => _showLoader = true),
                       );

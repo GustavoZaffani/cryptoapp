@@ -8,6 +8,7 @@ class CustomTextField extends StatefulWidget {
     required this.labelText,
     required this.prefixIcon,
     required this.controller,
+    this.enabled = true,
     this.keyboardType = TextInputType.text,
     this.validator,
   });
@@ -17,6 +18,7 @@ class CustomTextField extends StatefulWidget {
   final IconData prefixIcon;
   final TextEditingController controller;
   final TextInputType keyboardType;
+  final bool? enabled;
   final String? Function(String?)? validator;
 
   @override
@@ -27,6 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return CustomField(
+      enabled: widget.enabled,
         validator: widget.validator,
         keyboardType: widget.keyboardType,
         hintText: widget.hintText,

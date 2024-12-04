@@ -14,8 +14,7 @@ class HomeScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.deepPurple,
-        title: const Text("Bem-vindo",
-            style: TextStyle(color: Colors.white)),
+        title: const Text("Bem-vindo", style: TextStyle(color: Colors.white)),
       ),
       body: const Padding(
         padding: EdgeInsets.all(8.0),
@@ -51,8 +50,12 @@ class HomeScreen extends StatelessWidget {
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           loginController.logout(
-            onSuccess: () => Navigator.pushReplacementNamed(context, loginRoute),
-            onError: (error) => Alerts.showUnexpectedErrorDialog(context, error),
+            onSuccess: () =>
+                Navigator.pushReplacementNamed(context, loginRoute),
+            onError: (error) => Alerts.showUnexpectedErrorDialog(
+              context: context,
+              message: error,
+            ),
           );
         },
         backgroundColor: Colors.deepPurple,

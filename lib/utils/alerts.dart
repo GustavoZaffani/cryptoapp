@@ -1,35 +1,55 @@
 import 'package:flutter/material.dart';
 
 class Alerts {
-  static void showErrorDialog(
-      BuildContext context, String message) {
+  static void showSuccessDialog({
+    required BuildContext context,
+    required String message,
+    required VoidCallback onConfirmPressed,
+  }) {
     showAlertDialog(
-      context,
-      Icons.error,
-      Colors.red,
-      "Ops... ",
-      message,
+      context: context,
+      icon: Icons.check_circle,
+      color: Colors.green,
+      title: "Sucesso!",
+      message: message,
+      onConfirmPressed: onConfirmPressed,
     );
   }
 
-  static void showUnexpectedErrorDialog(
-      BuildContext context, String message) {
+  static void showErrorDialog({
+    required BuildContext context,
+    required String message,
+  }) {
     showAlertDialog(
-      context,
-      Icons.error,
-      Colors.red,
-      "Ops... ",
-      "Ocorreu um erro inesperado. Error: $message",
+      context: context,
+      icon: Icons.error,
+      color: Colors.red,
+      title: "Ops... ",
+      message: message,
     );
   }
 
-  static void showAlertDialog(
-    BuildContext context,
-    IconData icon,
-    Color color,
-    String title,
-    String message,
-  ) {
+  static void showUnexpectedErrorDialog({
+    required BuildContext context,
+    required String message,
+  }) {
+    showAlertDialog(
+      context: context,
+      icon: Icons.error,
+      color: Colors.red,
+      title: "Ops... ",
+      message: "Ocorreu um erro inesperado. Error: $message",
+    );
+  }
+
+  static void showAlertDialog({
+    required BuildContext context,
+    required IconData icon,
+    required Color color,
+    required String title,
+    required String message,
+    VoidCallback? onConfirmPressed,
+  }) {
     showDialog(
       context: context,
       builder: (BuildContext context) {
@@ -49,6 +69,7 @@ class Alerts {
             TextButton(
               onPressed: () {
                 Navigator.of(context).pop();
+                onConfirmPressed?.call();
               },
               child: const Text('OK'),
             ),

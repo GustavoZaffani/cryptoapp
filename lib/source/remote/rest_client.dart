@@ -14,6 +14,12 @@ abstract class RestClient {
   @GET('/users/{userId}')
   Future<User> getUser(@Path() String userId);
 
+  @POST('/users')
+  Future<User> saveUser(@Body() User user);
+
+  @PATCH('/users/{userId}')
+  Future<User> updateUser(@Path() String userId, @Body() User user);
+
   @POST('/login')
   Future<String> login(@Body() Login login);
 

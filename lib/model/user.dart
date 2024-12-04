@@ -6,14 +6,18 @@ part 'user.g.dart';
 class User {
 
   const User({
-    required this.name,
-    required this.email,
-    required this.password,
+    this.id,
+    this.name,
+    this.email,
+    this.password,
   });
 
-  final String name;
-  final String email;
-  final String password;
+  final String? id;
+  final String? name;
+  final String? email;
+
+  @JsonKey(defaultValue: '')
+  final String? password;
 
   factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
 

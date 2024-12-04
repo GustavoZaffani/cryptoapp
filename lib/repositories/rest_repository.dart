@@ -25,10 +25,22 @@ class RestRepositoryImpl implements RestRepository {
   Future<Wallet> retrieveWallet({required String userId}) {
     return RestClient(Dio()).retrieveWallet(userId);
   }
+
+  @override
+  Future<User> saveUser({required User user}) {
+    return RestClient(Dio()).saveUser(user);
+  }
+
+  @override
+  Future<User> updateUser({required String userId, required User user}) {
+    return RestClient(Dio()).updateUser(userId, user);
+  }
 }
 
 abstract class RestRepository {
   Future<User> getUserById({required String userId});
+  Future<User> saveUser({required User user});
+  Future<User> updateUser({required String userId, required User user});
   Future<String> login({required Login login});
   Future<List<NegotiationCrypto>> listNegotiationCrypto({required String userId});
   Future<Wallet> retrieveWallet({required String userId});

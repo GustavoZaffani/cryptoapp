@@ -7,12 +7,14 @@ class CustomPasswordField extends StatefulWidget {
     required this.hintText,
     required this.labelText,
     required this.controller,
+    this.enabled = true,
     this.validator,
   });
 
   final String hintText;
   final String labelText;
   final TextEditingController controller;
+  final bool? enabled;
   final String? Function(String?)? validator;
 
   @override
@@ -25,6 +27,7 @@ class _CustomPasswordFieldState extends State<CustomPasswordField> {
   @override
   Widget build(BuildContext context) {
     return CustomField(
+      enabled: widget.enabled,
       validator: widget.validator,
       keyboardType: TextInputType.text,
       hintText: widget.hintText,

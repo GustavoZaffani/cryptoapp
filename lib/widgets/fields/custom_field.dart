@@ -10,6 +10,7 @@ class CustomField extends StatefulWidget {
     required this.controller,
     required this.onPressed,
     required this.keyboardType,
+    this.enabled = true,
     this.isObscureText = false,
     this.validator,
   });
@@ -22,6 +23,7 @@ class CustomField extends StatefulWidget {
   final VoidCallback onPressed;
   final TextInputType keyboardType;
   final bool isObscureText;
+  final bool? enabled;
   final String? Function(String?)? validator;
 
   @override
@@ -32,6 +34,7 @@ class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      enabled: widget.enabled,
       validator: widget.validator,
       obscureText: widget.isObscureText,
       controller: widget.controller,
