@@ -130,6 +130,11 @@ class _LoginState extends State<LoginScreen> {
                   },
                   child: const Text("Login"),
                 ),
+                const SizedBox(height: 16),
+                TextButton(
+                  onPressed: () => Navigator.pushNamed(context, signUpRoute),
+                  child: const Text("Não tem uma conta? Cadastre-se"),
+                ),
               ],
             ),
           ),
