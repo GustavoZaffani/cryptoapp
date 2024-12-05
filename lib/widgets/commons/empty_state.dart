@@ -10,6 +10,8 @@ class EmptyStateWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -17,10 +19,10 @@ class EmptyStateWidget extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(
+            Icon(
               Icons.hourglass_empty,
               size: 80,
-              color: Colors.grey,
+              color: defaultColorScheme.onSurfaceVariant,
             ),
             const SizedBox(height: 16),
             Text(
@@ -28,7 +30,7 @@ class EmptyStateWidget extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.grey[700],
+                color: defaultColorScheme.onSurface,
               ),
               textAlign: TextAlign.center,
             )

@@ -13,16 +13,18 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return PopScope(
       canPop: false,
       child: Scaffold(
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: Colors.deepPurple,
-          title: const Text("Bem-vindo", style: TextStyle(color: Colors.white)),
+          backgroundColor: defaultColorScheme.primaryContainer,
+          title: Text("Bem-vindo", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
           actions: [
             IconButton(
-              icon: const Icon(Icons.info_outline),
+              icon: Icon(Icons.info_outline, color: defaultColorScheme.onPrimaryContainer),
               onPressed: () {
                 deviceInfoController.getDeviceInfo(
                   onSuccess: (info) {
@@ -87,10 +89,11 @@ class HomeScreen extends StatelessWidget {
               ),
             );
           },
-          backgroundColor: Colors.deepPurple,
-          child: const Icon(
+          backgroundColor: defaultColorScheme.primary,
+          foregroundColor: defaultColorScheme.onPrimary,
+          child: Icon(
             Icons.logout,
-            color: Colors.white,
+            color: defaultColorScheme.onPrimary,
           ),
         ),
         floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,

@@ -61,13 +61,15 @@ class _MarketScreenState extends State<MarketScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: const Text("Mercado", style: TextStyle(color: Colors.white)),
+        backgroundColor: defaultColorScheme.primaryContainer,
+        title: Text("Mercado", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh),
+            icon: Icon(Icons.refresh, color: defaultColorScheme.onPrimaryContainer),
             onPressed: _fetchMarketData,
           ),
         ],

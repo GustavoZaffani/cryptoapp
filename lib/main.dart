@@ -1,3 +1,4 @@
+import 'package:cryptoapp/themes/colors.dart';
 import 'package:cryptoapp/widgets/screens/home_screen.dart';
 import 'package:cryptoapp/widgets/screens/login_screen.dart';
 import 'package:cryptoapp/widgets/screens/market_screen.dart';
@@ -29,9 +30,14 @@ class CryptoApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'CryptoApp',
       theme: ThemeData(
-        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
+        colorScheme: lightColorScheme
       ),
+      darkTheme: ThemeData(
+        useMaterial3: true,
+        colorScheme: darkColorScheme
+      ),
+      themeMode: ThemeMode.system,
       initialRoute: loginRoute,
       routes: {
         loginRoute: (context) => const LoginScreen(),

@@ -20,7 +20,8 @@ class CryptoWalletCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Color profitColor = profitOrLossPercentage >= 0 ? Colors.green : Colors.red;
+    final defaultColorScheme = Theme.of(context).colorScheme;
+    Color profitColor = profitOrLossPercentage >= 0 ? defaultColorScheme.primary : defaultColorScheme.error;
 
     return Card(
       elevation: 5,

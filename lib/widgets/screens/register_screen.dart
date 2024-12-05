@@ -52,12 +52,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: const Text("Cadastro", style: TextStyle(color: Colors.white)),
-        ),
-        body: _getWidget());
+      appBar: AppBar(
+        backgroundColor: defaultColorScheme.primaryContainer,
+        title: Text("Cadastro", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
+      ),
+      body: _getWidget(),
+    );
   }
 
   Widget _registerBody() {

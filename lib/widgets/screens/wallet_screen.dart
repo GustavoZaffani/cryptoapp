@@ -60,13 +60,15 @@ class _WalletScreenState extends State<WalletScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Colors.deepPurple,
-        title: const Text("Carteira", style: TextStyle(color: Colors.white)),
+        backgroundColor: defaultColorScheme.primaryContainer,
+        title: Text("Carteira", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh),
+            icon: Icon(Icons.refresh, color: defaultColorScheme.onPrimaryContainer),
             onPressed: _fetchWallet,
           ),
         ],

@@ -10,6 +10,8 @@ class ErrorState extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Center(
       child: Padding(
         padding: const EdgeInsets.all(16.0),
@@ -17,10 +19,10 @@ class ErrorState extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            const Icon(
-              Icons.error_outline, // Ícone de erro
+            Icon(
+              Icons.error_outline,
               size: 80,
-              color: Colors.red, // Cor vermelha para representar erro
+              color: defaultColorScheme.error,
             ),
             const SizedBox(height: 16),
             Text(
@@ -28,7 +30,7 @@ class ErrorState extends StatelessWidget {
               style: TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.bold,
-                color: Colors.red[700], // Cor da mensagem de erro
+                color: defaultColorScheme.error,
               ),
               textAlign: TextAlign.center,
             ),

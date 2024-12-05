@@ -24,6 +24,8 @@ class CryptoMarketCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Card(
       elevation: 5,
       margin: const EdgeInsets.all(10),
@@ -38,77 +40,81 @@ class CryptoMarketCard extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.bold,
-                    color: Colors.black87,
+                    color: defaultColorScheme.onSurface,
                   ),
                 ),
                 Text(
                   symbol.toUpperCase(),
                   style: TextStyle(
                     fontSize: 16,
-                    color: Colors.grey[600],
+                    color: defaultColorScheme.onSurfaceVariant,
                   ),
                 ),
               ],
             ),
             const SizedBox(height: 8),
-            _buildPriceInfo('Preço atual', currentPrice),
+            _buildPriceInfo(context, 'Preço atual', currentPrice),
             const SizedBox(height: 8),
-            _buildPriceInfo('Volume atual', currentVolume),
+            _buildPriceInfo(context, 'Volume atual', currentVolume),
             const SizedBox(height: 8),
-            _buildPriceChangeInfo('Change (1h)', percentChange1h),
+            _buildPriceChangeInfo(context, 'Change (1h)', percentChange1h),
             const SizedBox(height: 8),
-            _buildPriceChangeInfo('Change (24h)', percentChange24h),
+            _buildPriceChangeInfo(context, 'Change (24h)', percentChange24h),
             const SizedBox(height: 8),
-            _buildPriceChangeInfo('Change (7d)', percentChange7d),
+            _buildPriceChangeInfo(context, 'Change (7d)', percentChange7d),
             const SizedBox(height: 8),
-            _buildPriceChangeInfo('Change (30d)', percentChange30d),
+            _buildPriceChangeInfo(context, 'Change (30d)', percentChange30d),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildPriceInfo(String label, double value) {
+  Widget _buildPriceInfo(BuildContext context, String label, double value) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
-            color: Colors.black54,
+            color: defaultColorScheme.onSurface,
           ),
         ),
         Text(
           '\$${value.toStringAsFixed(2)}',
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
-            color: Colors.black87,
+            color: defaultColorScheme.onSurface,
           ),
         ),
       ],
     );
   }
 
-  Widget _buildPriceChangeInfo(String label, double changePercent) {
+  Widget _buildPriceChangeInfo(BuildContext context, String label, double changePercent) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Text(
           label,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 14,
-            color: Colors.black54,
+            color: defaultColorScheme.onSurface,
           ),
         ),
         Text(
           '${changePercent.toStringAsFixed(2)}%',
           style: TextStyle(
             fontSize: 14,
-            color: changePercent >= 0 ? Colors.green : Colors.red,
+            color: changePercent >= 0 ? defaultColorScheme.primary : defaultColorScheme.error,
           ),
         ),
       ],

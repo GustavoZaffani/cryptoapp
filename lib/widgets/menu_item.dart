@@ -16,41 +16,46 @@ class MenuItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return InkWell(
       onTap: () => Navigator.pushNamed(context, route),
       child: Card(
-        color: Colors.white60,
+        color: defaultColorScheme.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
         ),
         clipBehavior: Clip.antiAliasWithSaveLayer,
-        elevation: 3,
+        elevation: 4,
         child: Padding(
-          padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 15.0),
+          padding: const EdgeInsets.symmetric(vertical: 12.0, horizontal: 16.0),
           child: Row(
             children: [
               Icon(
                 icon,
-                color: Colors.black87,
-                size: 60,
+                color: defaultColorScheme.primary,
+                size: 40,
               ),
-              const SizedBox(width: 15),
+              const SizedBox(width: 20),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
                     title,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'Roboto',
-                      fontSize: 24,
+                      fontSize: 20,
                       fontWeight: FontWeight.bold,
+                      color: defaultColorScheme.onSurface,
                     ),
                   ),
+                  const SizedBox(height: 4),
                   Text(
                     subtitle,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontFamily: 'Roboto',
                       fontSize: 14,
+                      color: defaultColorScheme.onSurfaceVariant,
                     ),
                   ),
                 ],

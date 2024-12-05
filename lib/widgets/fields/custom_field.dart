@@ -33,40 +33,42 @@ class CustomField extends StatefulWidget {
 class _CustomFieldState extends State<CustomField> {
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return TextFormField(
       enabled: widget.enabled,
       validator: widget.validator,
       obscureText: widget.isObscureText,
       controller: widget.controller,
-      keyboardType: TextInputType.text,
+      keyboardType: widget.keyboardType,
       decoration: InputDecoration(
         hintText: widget.hintText,
-        hintStyle: const TextStyle(
-          color: Colors.grey,
+        hintStyle: TextStyle(
+          color: defaultColorScheme.onSurfaceVariant,
         ),
         labelText: widget.labelText,
-        labelStyle: const TextStyle(
-          color: Colors.black,
+        labelStyle: TextStyle(
+          color: defaultColorScheme.onSurface,
           fontSize: 16,
         ),
-        prefixIcon: Icon(widget.prefixIcon),
+        prefixIcon: Icon(widget.prefixIcon, color: defaultColorScheme.onSurface),
         suffixIcon: IconButton(
           onPressed: widget.onPressed,
-          icon: Icon(widget.suffixIcon),
+          icon: Icon(widget.suffixIcon, color: defaultColorScheme.onSurface),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(20),
-          borderSide: const BorderSide(
-            color: Colors.grey,
+          borderSide: BorderSide(
+            color: defaultColorScheme.outline,
             width: 2,
           ),
         ),
-        focusedBorder: const OutlineInputBorder(
-          borderRadius: BorderRadius.all(
+        focusedBorder: OutlineInputBorder(
+          borderRadius: const BorderRadius.all(
             Radius.circular(20),
           ),
           borderSide: BorderSide(
-            color: Colors.deepPurple,
+            color: defaultColorScheme.primary,
             width: 2,
           ),
         ),

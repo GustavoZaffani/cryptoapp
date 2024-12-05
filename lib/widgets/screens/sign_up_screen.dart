@@ -23,15 +23,18 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.deepPurple,
-          title: const Text(
-            "Bem-vindo, faça seu cadastro",
-            style: TextStyle(color: Colors.white),
-          ),
+      appBar: AppBar(
+        backgroundColor: defaultColorScheme.primaryContainer,
+        title: Text(
+          "Bem-vindo, faça seu cadastro",
+          style: TextStyle(color: defaultColorScheme.onPrimaryContainer),
         ),
-        body: _getWidget());
+      ),
+      body: _getWidget(),
+    );
   }
 
   Widget _signUpBody() {

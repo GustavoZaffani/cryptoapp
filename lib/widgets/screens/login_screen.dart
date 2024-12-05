@@ -72,6 +72,8 @@ class _LoginState extends State<LoginScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final defaultColorScheme = Theme.of(context).colorScheme;
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(14.0),
@@ -81,7 +83,11 @@ class _LoginState extends State<LoginScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.supervised_user_circle_outlined, size: 100),
+                Icon(
+                  Icons.supervised_user_circle_outlined,
+                  size: 100,
+                  color: defaultColorScheme.primary,
+                ),
                 const SizedBox(height: 16),
                 if (_showLoader) const LinearProgressIndicator(),
                 const SizedBox(height: 16),
