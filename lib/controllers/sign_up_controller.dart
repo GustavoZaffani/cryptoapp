@@ -25,7 +25,7 @@ class SignUpController {
         password: password,
       )));
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao criar novo usuário: $e");
     } finally {
       onFinally();
     }

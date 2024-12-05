@@ -27,7 +27,7 @@ class WalletController {
         onFinally: () {},
       );
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao recuperar a carteira: $e");
     } finally {
       onFinally();
     }

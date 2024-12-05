@@ -27,7 +27,7 @@ class RegisterController {
         onFinally: () {},
       );
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao recuperar o usuário: $e");
     } finally {
       onFinally();
     }
@@ -46,7 +46,8 @@ class RegisterController {
       await loginController.getCurrentAuthentication(
         onSuccess: (data) async {
           if (data != null) {
-            onSuccess(await restRepository.updateUser(userId: data.userId, user: User(name: name)));
+            onSuccess(await restRepository.updateUser(
+                userId: data.userId, user: User(name: name)));
           }
         },
         onError: (error) => onError(error),
@@ -54,7 +55,7 @@ class RegisterController {
         onFinally: () {},
       );
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao atualizar o usuário: $e");
     } finally {
       onFinally();
     }

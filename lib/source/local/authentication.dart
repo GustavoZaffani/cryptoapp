@@ -5,6 +5,7 @@ part 'authentication.g.dart';
 
 class Authentication extends Table {
   TextColumn get userId => text().unique()();
+
   TextColumn get emailLogged => text()();
 }
 

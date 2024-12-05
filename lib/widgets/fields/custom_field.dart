@@ -51,7 +51,8 @@ class _CustomFieldState extends State<CustomField> {
           color: defaultColorScheme.onSurface,
           fontSize: 16,
         ),
-        prefixIcon: Icon(widget.prefixIcon, color: defaultColorScheme.onSurface),
+        prefixIcon:
+            Icon(widget.prefixIcon, color: defaultColorScheme.onSurface),
         suffixIcon: IconButton(
           onPressed: widget.onPressed,
           icon: Icon(widget.suffixIcon, color: defaultColorScheme.onSurface),

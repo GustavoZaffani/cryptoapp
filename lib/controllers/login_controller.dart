@@ -19,7 +19,7 @@ class LoginController {
       onLoading();
       onSuccess(await restRepository.login(login: login));
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao efetuar o login: $e");
     } finally {
       onFinally();
     }
@@ -35,7 +35,7 @@ class LoginController {
       onLoading();
       onSuccess(await dbRepository.getCurrentAuthentication());
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao recuperar a autenticação: $e");
     } finally {
       onFinally();
     }
@@ -53,20 +53,21 @@ class LoginController {
       onLoading();
       onSuccess(await dbRepository.insertAuthentication(userId, currentEmail));
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao salvar a autenticação: $e");
     } finally {
       onFinally();
     }
   }
 
-  Future<void> logout(
-      {required OnSuccessNoContentCallback onSuccess,
-      required OnErrorCallback onError}) async {
+  Future<void> logout({
+    required OnSuccessNoContentCallback onSuccess,
+    required OnErrorCallback onError,
+  }) async {
     try {
       await dbRepository.deleteAuthentication();
       onSuccess();
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao deslogar: $e");
     }
   }
 }

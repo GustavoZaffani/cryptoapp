@@ -47,23 +47,22 @@ class CryptoWalletCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'Quantidade: ${quantity.toString()}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
-              'Preço de Compra: ${walletValue}',
+              'Preço de Compra: $walletValue',
               style: Theme.of(context).textTheme.titleSmall,
             ),
-            SizedBox(height: 10),
-            // Preço Atual
+            const SizedBox(height: 10),
             Text(
-              'Preço Atual: ${currentValue}',
+              'Preço Atual: $currentValue',
               style: Theme.of(context).textTheme.titleSmall,
             ),
-            SizedBox(height: 10),
+            const SizedBox(height: 10),
             Text(
               'Lucro/Prejuízo: ${profitOrLossPercentage.toStringAsFixed(2)}%',
               style: TextStyle(

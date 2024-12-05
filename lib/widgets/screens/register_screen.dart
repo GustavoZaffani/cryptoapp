@@ -57,7 +57,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: defaultColorScheme.primaryContainer,
-        title: Text("Cadastro", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
+        title: Text("Cadastro",
+            style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
       ),
       body: _getWidget(),
     );

@@ -29,7 +29,7 @@ class _CustomTextFieldState extends State<CustomTextField> {
   @override
   Widget build(BuildContext context) {
     return CustomField(
-      enabled: widget.enabled,
+        enabled: widget.enabled,
         validator: widget.validator,
         keyboardType: widget.keyboardType,
         hintText: widget.hintText,

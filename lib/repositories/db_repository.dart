@@ -1,7 +1,6 @@
 import 'package:cryptoapp/source/local/authentication.dart';
 
 class DbRepositoryImpl implements DbRepository {
-
   final AppDatabase appDatabase = AppDatabase();
 
   @override
@@ -31,5 +30,4 @@ abstract class DbRepository {
   Future<int> insertAuthentication(String userId, String currentEmail);
 
   Future<void> deleteAuthentication();
-
 }

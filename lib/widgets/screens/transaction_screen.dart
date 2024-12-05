@@ -64,10 +64,12 @@ class _TransactionListState extends State<TransactionList> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: defaultColorScheme.primaryContainer,
-        title: Text("Transações", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
+        title: Text("Transações",
+            style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh, color: defaultColorScheme.onPrimaryContainer),
+            icon: Icon(Icons.refresh,
+                color: defaultColorScheme.onPrimaryContainer),
             onPressed: _fetchTransactions,
           ),
         ],

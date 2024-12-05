@@ -29,27 +29,28 @@ class CryptoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ChangeNotifierProvider(
-        create: (context) => ThemeProviderController(),
-        child:
-            Consumer<ThemeProviderController>(builder: (context, themeProvider, child) {
-          return MaterialApp(
-            debugShowCheckedModeBanner: false,
-            title: 'CryptoApp',
-            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
-            darkTheme:
-                ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
-            themeMode: themeProvider.themeMode,
-            initialRoute: loginRoute,
-            routes: {
-              loginRoute: (context) => const LoginScreen(),
-              homeRoute: (context) => HomeScreen(),
-              walletRoute: (context) => const WalletScreen(),
-              transactionsRoute: (context) => const TransactionList(),
-              marketRoute: (context) => const MarketScreen(),
-              settingsRoute: (context) => const RegisterScreen(),
-              signUpRoute: (context) => const SignUpScreen(),
-            },
-          );
-        }));
+      create: (context) => ThemeProviderController(),
+      child: Consumer<ThemeProviderController>(
+          builder: (context, themeProvider, child) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'Crypto Manager',
+          theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+          darkTheme:
+              ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+          themeMode: themeProvider.themeMode,
+          initialRoute: loginRoute,
+          routes: {
+            loginRoute: (context) => const LoginScreen(),
+            homeRoute: (context) => HomeScreen(),
+            walletRoute: (context) => const WalletScreen(),
+            transactionsRoute: (context) => const TransactionList(),
+            marketRoute: (context) => const MarketScreen(),
+            settingsRoute: (context) => const RegisterScreen(),
+            signUpRoute: (context) => const SignUpScreen(),
+          },
+        );
+      }),
+    );
   }
 }

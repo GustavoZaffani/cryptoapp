@@ -19,7 +19,8 @@ class TransactionCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final defaultColorScheme = Theme.of(context).colorScheme;
-    Color typeColor = type == 'BUY' ? defaultColorScheme.primary : defaultColorScheme.error;
+    Color typeColor =
+        type == 'BUY' ? defaultColorScheme.primary : defaultColorScheme.error;
     IconData transactionIcon =
         type == 'BUY' ? Icons.arrow_upward : Icons.arrow_downward;
 
@@ -59,7 +60,6 @@ class TransactionCard extends StatelessWidget {
                     style: const TextStyle(
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
-                      color: Colors.black87,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -68,9 +68,8 @@ class TransactionCard extends StatelessWidget {
                     children: [
                       Text(
                         '${quantity.toStringAsFixed(8)} $cryptoSymbol',
-                        style: TextStyle(
+                        style: const TextStyle(
                           fontSize: 14,
-                          color: Colors.grey[600],
                         ),
                       ),
                       Text(

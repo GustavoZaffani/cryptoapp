@@ -19,7 +19,8 @@ class NegotiationCryptoController {
       await loginController.getCurrentAuthentication(
         onSuccess: (data) async {
           if (data != null) {
-            onSuccess(await restRepository.listNegotiationCrypto(userId: data.userId));
+            onSuccess(await restRepository.listNegotiationCrypto(
+                userId: data.userId));
           }
         },
         onError: (error) => onError(error),
@@ -27,7 +28,7 @@ class NegotiationCryptoController {
         onFinally: () {},
       );
     } catch (e) {
-      onError("Erro ao fazer a requisição: $e");
+      onError("Erro ao buscar as negociações: $e");
     } finally {
       onFinally();
     }

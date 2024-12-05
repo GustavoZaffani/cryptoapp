@@ -18,7 +18,8 @@ class RestRepositoryImpl implements RestRepository {
   }
 
   @override
-  Future<List<NegotiationCrypto>> listNegotiationCrypto({required String userId}) {
+  Future<List<NegotiationCrypto>> listNegotiationCrypto(
+      {required String userId}) {
     return RestClient(Dio()).listNegotiationCrypto(userId);
   }
 
@@ -45,10 +46,17 @@ class RestRepositoryImpl implements RestRepository {
 
 abstract class RestRepository {
   Future<User> getUserById({required String userId});
+
   Future<User> saveUser({required User user});
+
   Future<User> updateUser({required String userId, required User user});
+
   Future<String> login({required Login login});
-  Future<List<NegotiationCrypto>> listNegotiationCrypto({required String userId});
+
+  Future<List<NegotiationCrypto>> listNegotiationCrypto(
+      {required String userId});
+
   Future<Wallet> retrieveWallet({required String userId});
+
   Future<List<CryptoMarket>> retrieveMarket();
 }

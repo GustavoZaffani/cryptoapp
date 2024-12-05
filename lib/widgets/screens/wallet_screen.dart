@@ -65,10 +65,12 @@ class _WalletScreenState extends State<WalletScreen> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: defaultColorScheme.primaryContainer,
-        title: Text("Carteira", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
+        title: Text("Carteira",
+            style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
         actions: [
           IconButton(
-            icon: Icon(Icons.refresh, color: defaultColorScheme.onPrimaryContainer),
+            icon: Icon(Icons.refresh,
+                color: defaultColorScheme.onPrimaryContainer),
             onPressed: _fetchWallet,
           ),
         ],

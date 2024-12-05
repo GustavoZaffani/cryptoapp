@@ -47,8 +47,6 @@ class HomeScreen extends StatelessWidget {
                       message: error,
                     );
                   },
-                  onLoading: () => print('Carregando informações...'),
-                  onFinally: () => print('Finalizado'),
                 );
               },
             )
@@ -91,14 +89,14 @@ class HomeScreen extends StatelessWidget {
           backgroundColor: Colors.blue,
           children: [
             SpeedDialChild(
-              child: Icon(Icons.color_lens_outlined),
+              child: const Icon(Icons.color_lens_outlined),
               label: 'Mudar tema',
               onTap: () =>
                   Provider.of<ThemeProviderController>(context, listen: false)
                       .toggleTheme(),
             ),
             SpeedDialChild(
-              child: Icon(Icons.logout),
+              child: const Icon(Icons.logout),
               label: 'Sair',
               onTap: () {
                 loginController.logout(
