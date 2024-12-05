@@ -25,12 +25,12 @@ class MainActivity : FlutterActivity() {
     private fun getDeviceInfo(): String {
         val deviceInfo = mutableMapOf<String, String>()
 
-        deviceInfo["Modelo do Dispositivo"] = Build.MODEL        // Modelo do dispositivo (ex: Pixel 4)
-        deviceInfo["Versão do Android"] = Build.VERSION.RELEASE  // Versão do Android (ex: 11)
-        deviceInfo["Fabricante"] = Build.MANUFACTURER            // Fabricante do dispositivo (ex: Google)
-        deviceInfo["Marca do Dispositivo"] = Build.BRAND         // Marca do dispositivo (ex: Google)
-        deviceInfo["Nome do Dispositivo"] = Build.DEVICE         // Nome do dispositivo (ex: sailfish)
-        deviceInfo["Versão da SDK"] = Build.VERSION.SDK_INT.toString() // Versão da SDK (ex: 30)
+        deviceInfo["Modelo do Dispositivo"] = Build.MODEL
+        deviceInfo["Versão do Android"] = Build.VERSION.RELEASE
+        deviceInfo["Fabricante"] = Build.MANUFACTURER
+        deviceInfo["Marca do Dispositivo"] = Build.BRAND
+        deviceInfo["Nome do Dispositivo"] = Build.DEVICE
+        deviceInfo["Versão da SDK"] = Build.VERSION.SDK_INT.toString()
 
         return deviceInfo.entries.joinToString(separator = "\n") {
             "${it.key}: ${it.value}"

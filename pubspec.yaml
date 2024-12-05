@@ -41,6 +41,8 @@ dependencies:
   dio: ^5.0.0
   drift: ^2.21.0
   drift_flutter: ^0.1.0
+  flutter_speed_dial: ^5.0.4
+  provider: ^6.1.2
 
 dev_dependencies:
   flutter_test:

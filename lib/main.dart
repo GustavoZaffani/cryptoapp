@@ -1,3 +1,4 @@
+import 'package:cryptoapp/controllers/theme_controller.dart';
 import 'package:cryptoapp/themes/colors.dart';
 import 'package:cryptoapp/widgets/screens/home_screen.dart';
 import 'package:cryptoapp/widgets/screens/login_screen.dart';
@@ -7,6 +8,7 @@ import 'package:cryptoapp/widgets/screens/sign_up_screen.dart';
 import 'package:cryptoapp/widgets/screens/transaction_screen.dart';
 import 'package:cryptoapp/widgets/screens/wallet_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 const loginRoute = "/login";
 const homeRoute = "/home";
@@ -26,28 +28,28 @@ class CryptoApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'CryptoApp',
-      theme: ThemeData(
-        useMaterial3: true,
-        colorScheme: lightColorScheme
-      ),
-      darkTheme: ThemeData(
-        useMaterial3: true,
-        colorScheme: darkColorScheme
-      ),
-      themeMode: ThemeMode.system,
-      initialRoute: loginRoute,
-      routes: {
-        loginRoute: (context) => const LoginScreen(),
-        homeRoute: (context) => HomeScreen(),
-        walletRoute: (context) => const WalletScreen(),
-        transactionsRoute: (context) => const TransactionList(),
-        marketRoute: (context) => const MarketScreen(),
-        settingsRoute: (context) => const RegisterScreen(),
-        signUpRoute: (context) => const SignUpScreen(),
-      },
-    );
+    return ChangeNotifierProvider(
+        create: (context) => ThemeProviderController(),
+        child:
+            Consumer<ThemeProviderController>(builder: (context, themeProvider, child) {
+          return MaterialApp(
+            debugShowCheckedModeBanner: false,
+            title: 'CryptoApp',
+            theme: ThemeData(useMaterial3: true, colorScheme: lightColorScheme),
+            darkTheme:
+                ThemeData(useMaterial3: true, colorScheme: darkColorScheme),
+            themeMode: themeProvider.themeMode,
+            initialRoute: loginRoute,
+            routes: {
+              loginRoute: (context) => const LoginScreen(),
+              homeRoute: (context) => HomeScreen(),
+              walletRoute: (context) => const WalletScreen(),
+              transactionsRoute: (context) => const TransactionList(),
+              marketRoute: (context) => const MarketScreen(),
+              settingsRoute: (context) => const RegisterScreen(),
+              signUpRoute: (context) => const SignUpScreen(),
+            },
+          );
+        }));
   }
 }

@@ -1,9 +1,12 @@
 import 'package:cryptoapp/controllers/decice_info_controller.dart';
 import 'package:cryptoapp/controllers/login_controller.dart';
+import 'package:cryptoapp/controllers/theme_controller.dart';
 import 'package:cryptoapp/main.dart';
 import 'package:cryptoapp/utils/alerts.dart';
 import 'package:cryptoapp/widgets/menu_item.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_speed_dial/flutter_speed_dial.dart';
+import 'package:provider/provider.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -21,10 +24,14 @@ class HomeScreen extends StatelessWidget {
         appBar: AppBar(
           automaticallyImplyLeading: false,
           backgroundColor: defaultColorScheme.primaryContainer,
-          title: Text("Bem-vindo", style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
+          title: Text("Bem-vindo",
+              style: TextStyle(color: defaultColorScheme.onPrimaryContainer)),
           actions: [
             IconButton(
-              icon: Icon(Icons.info_outline, color: defaultColorScheme.onPrimaryContainer),
+              icon: Icon(
+                Icons.info_outline,
+                color: defaultColorScheme.onPrimaryContainer,
+              ),
               onPressed: () {
                 deviceInfoController.getDeviceInfo(
                   onSuccess: (info) {
@@ -78,25 +85,34 @@ class HomeScreen extends StatelessWidget {
             ],
           ),
         ),
-        floatingActionButton: FloatingActionButton(
-          onPressed: () {
-            loginController.logout(
-              onSuccess: () =>
-                  Navigator.pushReplacementNamed(context, loginRoute),
-              onError: (error) => Alerts.showUnexpectedErrorDialog(
-                context: context,
-                message: error,
-              ),
-            );
-          },
-          backgroundColor: defaultColorScheme.primary,
-          foregroundColor: defaultColorScheme.onPrimary,
-          child: Icon(
-            Icons.logout,
-            color: defaultColorScheme.onPrimary,
-          ),
+        floatingActionButton: SpeedDial(
+          icon: Icons.add,
+          activeIcon: Icons.close,
+          backgroundColor: Colors.blue,
+          children: [
+            SpeedDialChild(
+              child: Icon(Icons.color_lens_outlined),
+              label: 'Mudar tema',
+              onTap: () =>
+                  Provider.of<ThemeProviderController>(context, listen: false)
+                      .toggleTheme(),
+            ),
+            SpeedDialChild(
+              child: Icon(Icons.logout),
+              label: 'Sair',
+              onTap: () {
+                loginController.logout(
+                  onSuccess: () =>
+                      Navigator.pushReplacementNamed(context, loginRoute),
+                  onError: (error) => Alerts.showUnexpectedErrorDialog(
+                    context: context,
+                    message: error,
+                  ),
+                );
+              },
+            ),
+          ],
         ),
-        floatingActionButtonAnimator: FloatingActionButtonAnimator.scaling,
       ),
     );
   }
