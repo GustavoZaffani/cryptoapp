@@ -16,6 +16,20 @@ class Alerts {
     );
   }
 
+  static void showInfoDialog({
+    required BuildContext context,
+    required String title,
+    required String message
+  }) {
+    showAlertDialog(
+      context: context,
+      icon: Icons.check_circle,
+      color: Colors.blue,
+      title: title,
+      message: message
+    );
+  }
+
   static void showErrorDialog({
     required BuildContext context,
     required String message,

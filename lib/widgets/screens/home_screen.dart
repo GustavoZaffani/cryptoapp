@@ -1,3 +1,4 @@
+import 'package:cryptoapp/controllers/decice_info_controller.dart';
 import 'package:cryptoapp/controllers/login_controller.dart';
 import 'package:cryptoapp/main.dart';
 import 'package:cryptoapp/utils/alerts.dart';
@@ -8,6 +9,7 @@ class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
 
   final LoginController loginController = LoginController();
+  final DeviceInfoController deviceInfoController = DeviceInfoController();
 
   @override
   Widget build(BuildContext context) {
@@ -18,6 +20,30 @@ class HomeScreen extends StatelessWidget {
           automaticallyImplyLeading: false,
           backgroundColor: Colors.deepPurple,
           title: const Text("Bem-vindo", style: TextStyle(color: Colors.white)),
+          actions: [
+            IconButton(
+              icon: const Icon(Icons.info_outline),
+              onPressed: () {
+                deviceInfoController.getDeviceInfo(
+                  onSuccess: (info) {
+                    Alerts.showInfoDialog(
+                      context: context,
+                      title: 'Informações do dispositivo',
+                      message: info,
+                    );
+                  },
+                  onError: (error) {
+                    Alerts.showUnexpectedErrorDialog(
+                      context: context,
+                      message: error,
+                    );
+                  },
+                  onLoading: () => print('Carregando informações...'),
+                  onFinally: () => print('Finalizado'),
+                );
+              },
+            )
+          ],
         ),
         body: const Padding(
           padding: EdgeInsets.all(8.0),
