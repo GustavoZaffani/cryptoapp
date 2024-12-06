@@ -87,7 +87,7 @@ class CryptoMarketCard extends StatelessWidget {
           ),
         ),
         Text(
-          '\$${value.toStringAsFixed(2)}',
+          'R\$ ${value.toStringAsFixed(8)}',
           style: TextStyle(
             fontSize: 14,
             color: defaultColorScheme.onSurface,

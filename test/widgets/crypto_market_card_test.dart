@@ -24,9 +24,9 @@ void main() {
     expect(find.text('Bitcoin'), findsOneWidget);
     expect(find.text('BTC'), findsOneWidget);
     expect(find.text('Preço atual'), findsOneWidget);
-    expect(find.text('\$50000.00'), findsOneWidget);
+    expect(find.text('R\$ 50000.00000000'), findsOneWidget);
     expect(find.text('Volume atual'), findsOneWidget);
-    expect(find.text('\$1200.00'), findsOneWidget);
+    expect(find.text('R\$ 1200.00000000'), findsOneWidget);
     expect(find.text('Variação (1h)'), findsOneWidget);
     expect(find.text('0.50%'), findsOneWidget);
     expect(find.text('Variação (24h)'), findsOneWidget);

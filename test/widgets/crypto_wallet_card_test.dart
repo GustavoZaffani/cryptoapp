@@ -22,8 +22,8 @@ void main() {
 
     expect(find.text('Bitcoin (BTC)'), findsOneWidget);
     expect(find.text('Quantidade: 0.5'), findsOneWidget);
-    expect(find.text('Preço de Compra: 20000.0'), findsOneWidget);
-    expect(find.text('Preço Atual: 25000.0'), findsOneWidget);
+    expect(find.text('Preço de Compra: R\$ 20000.00000000'), findsOneWidget);
+    expect(find.text('Preço Atual: R\$ 25000.00000000'), findsOneWidget);
     expect(find.text('Lucro/Prejuízo: 25.00%'), findsOneWidget);
     expect(find.byIcon(Icons.arrow_upward), findsOneWidget);
 
@@ -54,12 +54,12 @@ void main() {
 
     expect(find.text('Ethereum (ETH)'), findsOneWidget);
     expect(find.text('Quantidade: 1.0'), findsOneWidget);
-    expect(find.text('Preço de Compra: 3000.0'), findsOneWidget);
-    expect(find.text('Preço Atual: 2500.0'), findsOneWidget);
+    expect(find.text('Preço de Compra: R\$ 3000.00000000'), findsOneWidget);
+    expect(find.text('Preço Atual: R\$ 2500.00000000'), findsOneWidget);
     expect(find.text('Lucro/Prejuízo: -16.67%'), findsOneWidget);
-    expect(find.byIcon(Icons.arrow_upward), findsOneWidget);
+    expect(find.byIcon(Icons.arrow_downward), findsOneWidget);
 
-    final icon = tester.widget<Icon>(find.byIcon(Icons.arrow_upward));
+    final icon = tester.widget<Icon>(find.byIcon(Icons.arrow_downward));
     expect(
         icon.color,
         equals(Theme.of(tester.element(find.byType(CryptoWalletCard)))

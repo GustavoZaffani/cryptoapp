@@ -22,6 +22,7 @@ class CryptoWalletCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final defaultColorScheme = Theme.of(context).colorScheme;
     Color profitColor = profitOrLossPercentage >= 0 ? defaultColorScheme.primary : defaultColorScheme.error;
+    IconData iconData = profitOrLossPercentage >= 0 ? Icons.arrow_upward : Icons.arrow_downward;
 
     return Card(
       elevation: 5,
@@ -42,7 +43,7 @@ class CryptoWalletCard extends StatelessWidget {
                       ),
                 ),
                 Icon(
-                  Icons.arrow_upward,
+                  iconData,
                   color: profitColor,
                 ),
               ],
@@ -54,12 +55,12 @@ class CryptoWalletCard extends StatelessWidget {
             ),
             const SizedBox(height: 10),
             Text(
-              'Preço de Compra: $walletValue',
+              'Preço de Compra: R\$ ${walletValue.toStringAsFixed(8)}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: 10),
             Text(
-              'Preço Atual: $currentValue',
+              'Preço Atual: R\$ ${currentValue.toStringAsFixed(8)}',
               style: Theme.of(context).textTheme.titleSmall,
             ),
             const SizedBox(height: 10),
